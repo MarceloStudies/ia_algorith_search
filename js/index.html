@@ -202,20 +202,33 @@
         "QUEST20": "O que é teste unitário e por que é importante?"
       };
 
+      $('#metodo').on('change', function(){
+        if($(this).val() == 4){
+          $("#limit").attr("hidden", false)
+        }else{
+          $("#limit").attr("hidden", true)
+        }
+      })
+
       $("#enviar").on('click', function (e) {
 
         var ini = $("#ini").val();
         var fim = $("#fim").val();
         var tipo = $("#metodo").val();
         var limit = $("#limit").val();
+        if (limit == '' || limit == null){
+          limit = '1' ;
+        }
 
         $.ajax({
           url: "http://localhost:5000/api/exemplo", // Substitua pelo URL da sua API Flask se estiver em um servidor diferente
           type: "POST",
           contentType: "application/json",
-          data: JSON.stringify({ inicio: ini, final: fim, tipo: parseInt(tipo) }),
+          data: JSON.stringify({ inicio: ini, final: fim, tipo: parseInt(tipo), limit: parseInt(limit) }),
           success: function (response) {
             $(".list-quest").empty()
+
+            console.table(response)
             let array = response.caminho;
             array.forEach(element => {
             $(".list-quest").append(`

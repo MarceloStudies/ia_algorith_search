@@ -435,7 +435,7 @@ h = gera_H(len(nos))
 
 
 
-def gerarAmbiente(inicio, final, tipo):
+def gerarAmbiente(inicio, final, tipo, limit):
     inicio = inicio.upper()
     final  = final.upper()
     if (tipo == 1):
@@ -451,7 +451,7 @@ def gerarAmbiente(inicio, final, tipo):
         algoritimo = "A_estrela"
 
     if (tipo == 4):
-        limite = 6
+        limite = limit
         caminho, custo = sol.aia_estrela(inicio,final,limite)
         algoritimo = "Aia_estrela"
 

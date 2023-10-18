@@ -16,7 +16,8 @@ def exemplo():
     final = dados.get('final')
     inicio = dados.get('inicio')
     tipo = dados.get('tipo')
-    return gerarAmbiente(inicio, final, tipo)
+    limit = dados.get('limit')
+    return gerarAmbiente(inicio, final, tipo, limit)
 
 if __name__ == '__main__':
     app.run(debug=True)
