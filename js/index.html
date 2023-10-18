@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- Import  via cdn jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      margin: 0;
+      display: flex;
+    }
+
+    .main-body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content-center {
+      background-color: rgb(25, 25, 74);
+      width: 80%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .main-quest {
+      background-color: #fff;
+      width: 80%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    .header-quest {
+      background-color: #212020;
+      ;
+      width: 100%;
+      height: 10%;
+      border-radius: 10px 10px 0 0;
+      color: white;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 2px;
+      justify-content: space-between;
+    }
+
+    .body-quest {
+      background-color: #f1f1f1;
+      width: 100%;
+      height: 100%;
+      border-radius: 0 0 10px 10px;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+    }
+
+    .list-quest {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-y: scroll;
+    }
+
+    .item-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .text-quest {
+      width: 90%;
+      height: 100px;
+      background-color: #fff;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-size: 12px;
+      border-radius: 10px;
+      margin: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .font-head{
+      font-weight: 700;
+      
+    }
+  </style>
+
+
+  <main class="main-body">
+
+    <div class="content-center">
+      <div class="main-quest">
+        <div class="header-quest">
+          <div class="item-form">
+            <label for="">Escolha o metodo:<label>
+                <select name="" id="metodo">
+                  <option value="">Selecione</option>
+                  <option value="1">Cursto Uniforme</option>
+                  <option value="2">Greedy</option>
+                  <option value="3">A Estrela</option>
+                  <option value="4">Aia Estrela</option>
+                </select>
+                <input style="width: 80px;" type="number" id="limit" placeholder="digite o limite" hidden>
+          </div>
+          <div class="item-from">
+            <label for="">Questão Inicial:</label>
+            <select name="" id="ini">
+              <option value="">Selecione</option>
+              <option value="QUEST1">1</option>
+              <option value="QUEST2">2</option>
+              <option value="QUEST3">3</option>
+              <option value="QUEST4">4</option>
+              <option value="QUEST5">5</option>
+              <option value="QUEST6">6</option>
+              <option value="QUEST7">7</option>
+              <option value="QUEST8">8</option>
+              <option value="QUEST9">9</option>
+              <option value="QUEST10">10</option>
+              <option value="QUEST11">11</option>
+              <option value="QUEST12">12</option>
+
+            </select>
+          </div>
+          <div class="item-from">
+            <label for="">Questão Final:</label>
+            <select name="" id="fim">
+              <option value="">Selecione</option>
+              <option value="QUEST1">1</option>
+              <option value="QUEST2">2</option>
+              <option value="QUEST3">3</option>
+              <option value="QUEST4">4</option>
+              <option value="QUEST5">5</option>
+              <option value="QUEST6">6</option>
+              <option value="QUEST7">7</option>
+              <option value="QUEST8">8</option>
+              <option value="QUEST9">9</option>
+              <option value="QUEST10">10</option>
+              <option value="QUEST11">11</option>
+              <option value="QUEST12">12</option>
+            </select>
+          </div>
+          <button type="button" id="enviar" class="btn btn-primary">Enviar</button>
+
+        </div>
+        <div class="body-quest">
+          <ul class="list-quest">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+
+    $(function () {
+
+      const perguntas = {
+        "QUEST1": "O que é um algoritmo?",
+        "QUEST2": "O que são variáveis em programação?",
+        "QUEST3": "Explique o que são estruturas de controle em programação.",
+        "QUEST4": "O que é uma estrutura de repetição?",
+        "QUEST5": "O que são arrays e como são usadas?",
+        "QUEST6": "Qual é a diferença entre '==' e '===' em JavaScript?",
+        "QUEST7": "Explique o que é recursão em programação.",
+        "QUEST8": "O que é uma função de ordem superior?",
+        "QUEST9": "O que são algoritmos de ordenação e dê exemplos.",
+        "QUEST10": "O que é complexidade de tempo e espaço em algoritmos?",
+        "QUEST11": "O que é orientação a objetos?",
+        "QUEST12": "Explique encapsulamento em programação orientada a objetos.",
+        "QUEST13": "O que é herança em programação orientada a objetos?",
+        "QUEST14": "Explique polimorfismo em programação orientada a objetos.",
+        "QUEST15": "O que são exceções em programação?",
+        "QUEST16": "O que é desenvolvimento ágil?",
+        "QUEST17": "O que é Git e como é usado no desenvolvimento de software?",
+        "QUEST18": "Explique o que é API (Interface de Programação de Aplicações).",
+        "QUEST19": "O que é CRUD em sistemas de informação?",
+        "QUEST20": "O que é teste unitário e por que é importante?"
+      };
+
+      $("#enviar").on('click', function (e) {
+
+        var ini = $("#ini").val();
+        var fim = $("#fim").val();
+        var tipo = $("#metodo").val();
+        var limit = $("#limit").val();
+
+        $.ajax({
+          url: "http://localhost:5000/api/exemplo", // Substitua pelo URL da sua API Flask se estiver em um servidor diferente
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({ inicio: ini, final: fim, tipo: parseInt(tipo) }),
+          success: function (response) {
+            $(".list-quest").empty()
+            let array = response.caminho;
+            array.forEach(element => {
+            $(".list-quest").append(`
+            <li class="text-quest">
+              <span class = "font-head">${element}</span>
+              <span>${perguntas[element]}</span>
+            </li>
+            `)
+           });
+          },
+          error: function (xhr, status, error) {
+            // Manipule erros aqui
+            console.log("Erro na requisição:", status, error);
+          },
+        });
+      })
+    });
+  </script>
+</body>
+
+</html>
