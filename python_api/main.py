@@ -163,6 +163,7 @@ class lista(object):
 
 class busca(object):
     
+    # Loop pelos Vizinhos 
     def custo_uniforme(self, inicio, fim):
         
         l1 = lista()
@@ -176,6 +177,7 @@ class busca(object):
         linha.append(0)
         visitado.append(linha)
         
+
         while l1.vazio() == False:
             atual = l1.deletaPrimeiro()
             
@@ -185,6 +187,7 @@ class busca(object):
                 return caminho, atual.valor2
         
             ind = nos.index(atual.estado)
+        # Atualização dos Custos no visitado:
             for novo in grafo[ind]:
                 
                 # CÁLCULO DO CUSTO DA ORIGEM ATÉ O NÓ ATUAL
@@ -193,6 +196,9 @@ class busca(object):
 
                 flag1 = True
                 flag2 = True
+                # ele compara o custo atualmente armazenado para esse nó (visitado[j][1]) com o novo custo 
+                # (v2). Se o novo custo (v2) for menor ou igual ao custo armazenado, 
+                # o nó não é inserido na lista. Se o novo custo for menor, o custo armazenado é atualizado para o novo custo.
                 for j in range(len(visitado)):
                     if visitado[j][0]==novo[0]:
                         if visitado[j][1]<=v2:
@@ -229,12 +235,14 @@ class busca(object):
         
         while l1.vazio() == False:
             atual = l1.deletaPrimeiro()
-            
+            print("Atual:",atual.estado)
+            print("Atual v2:",atual.valor2)
+
             if atual.estado == fim:
                 caminho = []
                 caminho = l2.exibeArvore2(atual.estado,atual.valor1)
-                #print("Cópia da árvore:\n",l2.exibeLista())
-                #print("\nÁrvore de busca:\n",l1.exibeLista(),"\n")
+                print("Cópia da árvore:\n",l2.exibeLista())
+                print("\nÁrvore de busca:\n",l1.exibeLista(),"\n")
 
                 return caminho, atual.valor2
         
@@ -246,6 +254,9 @@ class busca(object):
                 # CÁLCULO DO CUSTO DA ORIGEM ATÉ O NÓ ATUAL
                 v2 = atual.valor2 + novo[1]  # custo do caminho
                 v1 = h[ind_f][ind1] # f2(n)
+                print("Heuristica:")
+                print(ind_f, " - ", ind1)
+                print(h[ind_f][ind1])
 
                 flag1 = True
                 flag2 = True

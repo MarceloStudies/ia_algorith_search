@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafo de Perguntas</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <style>
+        body {
+            background: #011532;
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        svg {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            margin: auto;
+        }
+
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.6;
+        }
+
+        .node {
+            fill: #1f77b4;
+            stroke: #fff;
+            stroke-width: 2px;
+            cursor: pointer;
+        }
+
+        .node circle {
+            r: 25; /* Ajuste o valor do raio conforme necessário */
+        }
+
+        .node text {
+            font-size: 14px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <div class="questao-grafo">
+      <svg width="1580" height="820" id="graph"></svg>
+    </div>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="./js/grafo.js"></script>
+  </body>
+</html>
